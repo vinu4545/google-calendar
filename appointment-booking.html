@@ -481,17 +481,22 @@
             }
         }
 
-        /* Mobile-only override: increase iframe height to prevent internal scrolling on narrow screens
-           Desktop rules (min-height / height) remain unchanged above. */
+        /* Mobile-only override: slightly reduce mobile iframe height to remove extra gap while preserving no internal scrollbar */
         @media (max-width: 768px) {
             .calendar-frame {
-                height: 1800px; /* increase height only for mobile */
+                height: 1600px; /* further reduced for mobile */
             }
 
             .calendar-container {
                 overflow: visible;
                 margin: 0;
                 padding: 0;
+                margin-bottom: 0 !important;
+                padding-bottom: 0 !important;
+            }
+
+            footer {
+                margin-top: 0 !important;
             }
         }
     </style>
@@ -694,10 +699,170 @@
         <!-- <section class="booking-container">
             <div class="booking-card"
                 id="bookingForm">
-                <div class="card-body">
+                <div class="card-I have an HTML + CSS website with a Google Calendar iframe.
+
+Current situation:
+
+- Desktop view is PERFECT (no gap, no scrollbar) → DO NOT CHANGE ANYTHING FOR DESKTOP
+- Mobile view has a SMALL EMPTY SPACE between the Google Calendar and footer
+- There is NO scrollbar issue anymore → DO NOT reintroduce scrollbars
+
+--------------------------------------------------
+
+GOAL:
+
+- Remove ONLY the extra space below the calendar in mobile view
+- Keep desktop view EXACTLY unchanged
+- Do NOT introduce any inner scrollbar
+- Footer should sit directly below the calendar
+
+--------------------------------------------------
+
+STRICT RULES:
+
+- DO NOT modify desktop CSS
+- DO NOT change global iframe height
+- DO NOT use overflow:hidden
+- DO NOT use min-height (it causes extra space)
+- DO NOT break responsiveness
+
+--------------------------------------------------
+
+ROOT CAUSE:
+
+The iframe height on mobile is slightly larger than its content, causing extra blank space before the footer.
+
+--------------------------------------------------
+
+FINAL FIX (MOBILE ONLY):
+
+Add this CSS:
+
+@media (max-width: 768px) {
+
+  .calendar-frame {
+    height: 1650px; /* slightly reduce from current value */
+  }
+
+  .calendar-container {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  footer {
+    margin-top: 0 !important;
+  }
+
+}
+
+--------------------------------------------------
+
+IMPORTANT:
+
+- Only REDUCE height slightly (do NOT increase)
+- Adjust value (1600–1700px range) until gap disappears
+- This trims extra blank space without breaking layout
+- Do NOT use min-height here
+
+--------------------------------------------------
+
+EXPECTED RESULT:
+
+- Mobile: No gap between calendar and footer
+- Mobile: No inner scrollbar
+- Desktop: Completely unchanged
+- Layout remains clean and responsive
+
+--------------------------------------------------
+
+OUTPUT REQUIRED:
+
+- Only added mobile CSS
+- Explain why reducing height removed the gap
+- Confirm desktop remains unaffectedbody">
                     <form id="appointmentForm"
                         novalidate>
-                        <div class="booking-section">
+                        <div clasI have an HTML + CSS website with a Google Calendar iframe.
+
+Current situation:
+
+- Desktop view is PERFECT (no gap, no scrollbar) → DO NOT CHANGE ANYTHING FOR DESKTOP
+- Mobile view has a SMALL EMPTY SPACE between the Google Calendar and footer
+- There is NO scrollbar issue anymore → DO NOT reintroduce scrollbars
+
+--------------------------------------------------
+
+GOAL:
+
+- Remove ONLY the extra space below the calendar in mobile view
+- Keep desktop view EXACTLY unchanged
+- Do NOT introduce any inner scrollbar
+- Footer should sit directly below the calendar
+
+--------------------------------------------------
+
+STRICT RULES:
+
+- DO NOT modify desktop CSS
+- DO NOT change global iframe height
+- DO NOT use overflow:hidden
+- DO NOT use min-height (it causes extra space)
+- DO NOT break responsiveness
+
+--------------------------------------------------
+
+ROOT CAUSE:
+
+The iframe height on mobile is slightly larger than its content, causing extra blank space before the footer.
+
+--------------------------------------------------
+
+FINAL FIX (MOBILE ONLY):
+
+Add this CSS:
+
+@media (max-width: 768px) {
+
+  .calendar-frame {
+    height: 1650px; /* slightly reduce from current value */
+  }
+
+  .calendar-container {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  footer {
+    margin-top: 0 !important;
+  }
+
+}
+
+--------------------------------------------------
+
+IMPORTANT:
+
+- Only REDUCE height slightly (do NOT increase)
+- Adjust value (1600–1700px range) until gap disappears
+- This trims extra blank space without breaking layout
+- Do NOT use min-height here
+
+--------------------------------------------------
+
+EXPECTED RESULT:
+
+- Mobile: No gap between calendar and footer
+- Mobile: No inner scrollbar
+- Desktop: Completely unchanged
+- Layout remains clean and responsive
+
+--------------------------------------------------
+
+OUTPUT REQUIRED:
+
+- Only added mobile CSS
+- Explain why reducing height removed the gap
+- Confirm desktop remains unaffecteds="booking-section">
                             <div class="section-heading"><span></span>Select Service</div>
                             <div class="form-group">
                                 <select class="custom-select"
