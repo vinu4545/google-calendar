@@ -480,6 +480,20 @@
                 box-shadow: 0 14px 40px rgba(15, 35, 95, 0.1);
             }
         }
+
+        /* Mobile-only override: increase iframe height to prevent internal scrolling on narrow screens
+           Desktop rules (min-height / height) remain unchanged above. */
+        @media (max-width: 768px) {
+            .calendar-frame {
+                height: 1800px; /* increase height only for mobile */
+            }
+
+            .calendar-container {
+                overflow: visible;
+                margin: 0;
+                padding: 0;
+            }
+        }
     </style>
 </head>
 
