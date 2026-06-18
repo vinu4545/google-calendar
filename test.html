@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ITR Calculator</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f5f5f5;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+    }
+
+    h2 {
+      border-bottom: 1px solid #ddd;
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 5px;
+    }
+
+    select {
+      flex: 1;
+      padding: 8px;
+    }
+
+    .price {
+      width: 100px;
+      text-align: right;
+      font-weight: bold;
+      color: green;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .total {
+      font-size: 24px;
+      margin-top: 20px;
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>ITR Pricing Calculator</h1>
+
+    <!-- Residential -->
+    <h2>Residential Status</h2>
+    <label>Are you a Non-Resident Indian?</label>
+    <div class="row">
+      <select id="nri">
+        <option value="">Select</option>
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+      <span class="price" id="nriPrice">₹0</span>
+    </div>
+
+    <!-- Salary -->
+    <h2>Salary Income</h2>
+    <label>No. of Form 16 received for this Financial Year</label>
+    <div class="row">
+      <select id="form16">
+        <option value="">Select</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <span class="price" id="form16Price">₹0</span>
+    </div>
+
+    <!-- Shares -->
+    <h2>Capital Gains - Shares and Securities</h2>
+
+    <label>Do you have any capital gains from shares or securities?</label>
+    <div class="row">
+      <select id="shares">
+        <option value="">Select</option>
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+    </div>
+
+    <div id="sharesFields" class="hidden">
+
+      <label>If yes, how many Demats do you hold?</label>
+      <div class="row">
+        <select id="demat">
+          <option value="">Select</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        <span class="price" id="dematPrice">₹0</span>
+      </div>
+
+      <label>Did you do any Intraday Trading?</label>
+      <div class="row">
+        <select id="intraday">
+          <option value="">Select</option>
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </select>
+      </div>
+
+      <div id="intradayBox" class="hidden">
+        <label>Intraday Trading in how many demats?</label>
+        <div class="row">
+          <select id="intradayCount">
+            <option value="">Select</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+          <span class="price" id="intradayPrice">₹0</span>
+        </div>
+      </div>
+
+      <label>Did you trade in Futures & Options?</label>
+      <div class="row">
+        <select id="fno">
+          <option value="">Select</option>
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </select>
+      </div>
+
+      <div id="fnoBox" class="hidden">
+        <label>Traded in how many demats?</label>
+        <div class="row">
+          <select id="fnoCount">
+            <option value="">Select</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+          <span class="price" id="fnoPrice">₹0</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Property -->
+    <h2>Capital Gains - Properties</h2>
+    <label>Did you sell any property during the financial year?</label>
+    <div class="row">
+      <select id="property">
+        <option value="">Select</option>
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+    </div>
+
+    <div id="propBox" class="hidden">
+      <label>If yes, No. of Properties sold</label>
+      <div class="row">
+        <select id="propCount">
+          <option value="">Select</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        <span class="price" id="propPrice">₹0</span>
+      </div>
+    </div>
+
+    <!-- Crypto -->
+    <h2>Cryptocurrency</h2>
+    <label>Do you have any cryptocurrency transactions?</label>
+    <div class="row">
+      <select id="crypto">
+        <option value="">Select</option>
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+    </div>
+
+    <div id="cryptoBox" class="hidden">
+      <label>If yes, how many crypto accounts do you hold?</label>
+      <div class="row">
+        <select id="cryptoCount">
+          <option value="">Select</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        <span class="price" id="cryptoPrice">₹0</span>
+      </div>
+    </div>
+
+    <!-- Foreign -->
+    <h2>Foreign Assets</h2>
+    <label>Do you hold any foreign assets or foreign unlisted shares (Schedule FA)?</label>
+    <div class="row">
+      <select id="foreign">
+        <option value="">Select</option>
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+      <span class="price" id="foreignPrice">₹0</span>
+    </div>
+
+    <label>Whether sold any foreign shares?</label>
+    <div class="row">
+      <select id="foreignSold">
+        <option value="">Select</option>
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+    </div>
+
+    <!-- High Income -->
+    <h2>High Income Disclosure</h2>
+    <label>Is your Total Income during this financial Year above 1cr?</label>
+    <div class="row">
+      <select id="income1cr">
+        <option value="">Select</option>
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+    </div>
+
+    <!-- DTAA -->
+    <h2>DTAA</h2>
+    <div class="row">
+      <select id="dtaa">
+        <option value="">Select</option>
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+      <span class="price" id="dtaaPrice">₹0</span>
+    </div>
+
+    <!-- Total -->
+    <div class="total">
+      Total: ₹ <span id="total">0</span>
+    </div>
+
+  </div>
+
+<script>
+document.querySelectorAll("select").forEach(el => el.addEventListener("change", update));
+
+function val(id) { return document.getElementById(id).value; }
+function show(id, cond) { document.getElementById(id).style.display = cond ? "block" : "none"; }
+function setPrice(id, v) { document.getElementById(id).innerText = "₹" + v; }
+
+function update() {
+  show("sharesFields", val("shares") == "yes");
+  show("intradayBox", val("intraday") == "yes");
+  show("fnoBox", val("fno") == "yes");
+  show("propBox", val("property") == "yes");
+  show("cryptoBox", val("crypto") == "yes");
+  calculate();
+}
+
+function calculate() {
+
+  // 🔥 NA CONDITION (ADDED ONLY THIS)
+  if (val("foreignSold") === "yes" || val("income1cr") === "yes") {
+    document.getElementById("total").innerText = "NA";
+    return;
+  }
+
+  let total = 0;
+
+  // NRI
+  if (val("nri") == "yes") { setPrice("nriPrice", 3000); total += 3000; }
+  else if (val("nri") == "no") { setPrice("nriPrice", 1000); total += 1000; }
+  else setPrice("nriPrice", 0);
+
+  // Form16
+  let f = val("form16"), fp = 0;
+  if (f == 2) fp = 500; if (f == 3) fp = 1000; if (f == 4) fp = 1500;
+  setPrice("form16Price", fp); total += fp;
+
+  // Demat
+  let dp = 0;
+  if (val("shares") == "yes") {
+    let d = val("demat");
+    if (d == 1) dp = 1000;
+    if (d == 2) dp = 1500; if (d == 3) dp = 2000; if (d == 4) dp = 2500;
+  }
+  setPrice("dematPrice", dp); total += dp;
+
+  // Intraday
+  let ip = 0;
+  if (val("intraday") == "yes") {
+    let i = val("intradayCount");
+    if (i == 1) ip = 1000;
+    if (i == 2) ip = 1500; if (i == 3) ip = 2000; if (i == 4) ip = 2500;
+  }
+  setPrice("intradayPrice", ip); total += ip;
+
+  // FNO
+  let fp2 = 0;
+  if (val("fno") == "yes") {
+    let f = val("fnoCount");
+    if (f == 1) fp2 = 1500;
+    if (f == 2) fp2 = 2000; if (f == 3) fp2 = 2500; if (f == 4) fp2 = 3000;
+  }
+  setPrice("fnoPrice", fp2); total += fp2;
+
+  // Property
+  let pp = 0;
+  if (val("property") == "yes") {
+    let p = val("propCount");
+    if (p == 1) pp = 2500;
+    if (p == 2) pp = 3500; if (p == 3) pp = 4500; if (p == 4) pp = 5500;
+  }
+  setPrice("propPrice", pp); total += pp;
+
+  // Crypto
+  let cp = 0;
+  if (val("crypto") == "yes") {
+    let c = val("cryptoCount");
+    if (c == 1) cp = 2000; 
+    if (c == 2) cp = 2500; if (c == 3) cp = 3000; if (c == 4) cp = 3500;
+  }
+  setPrice("cryptoPrice", cp); total += cp;
+
+  // Foreign
+  let fp3 = val("foreign") == "yes" ? 3000 : 0;
+  setPrice("foreignPrice", fp3); total += fp3;
+
+  // DTAA
+  let dp2 = val("dtaa") == "yes" ? 2000 : 0;
+  setPrice("dtaaPrice", dp2); total += dp2;
+
+  document.getElementById("total").innerText = total;
+}
+</script>
+
+</body>
+
+</html>

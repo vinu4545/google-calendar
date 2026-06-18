@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Appointment Booking Page - SSAR & Co Chartered Accountant -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible"
+        content="IE=edge,chrome=1" />
+    <meta name="format-detection"
+        content="telephone=no" />
+    <meta http-equiv='cache-control'
+        content='no-cache' />
+    <meta http-equiv='expires'
+        content='0' />
+    <meta http-equiv='pragma'
+        content='no-cache' />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1" />
+
+    <title>Book Consultation | SSAR & Co Chartered Accountant</title>
+    <meta name="referrer"
+        content="no-referrer-when-downgrade" />
+    <meta name="description"
+        content="Schedule a 1-on-1 consultation with our CA experts for tax, audit, GST, and business advisory services." />
+    <meta name="keywords"
+        content="book consultation, appointment, CA consultation, tax advisor appointment" />
+    <meta name="robots"
+        content="all" />
+
+    <link rel="shortcut icon"
+        href="images/favicon.png"
+        type="image/x-icon">
+    <link rel="icon"
+        href="images/favicon.png"
+        type="image/x-icon">
+
+    <link href="css/bootstrap.css"
+        rel="stylesheet">
+    <link href="css/style.css"
+        rel="stylesheet">
+    <link href="css/responsive.css"
+        rel="stylesheet">
+
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+
+    <style>
+        .booking-hero-section {
+            background: linear-gradient(135deg, #3241ff 0%, #091394 100%);
+            color: #fff;
+            padding: 90px 0 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-hero-section:before {
+            content: '';
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            top: -80px;
+            right: -80px;
+            animation: floatCard 8s ease-in-out infinite;
+        }
+
+        @keyframes floatCard {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(20px);
+            }
+        }
+
+        .booking-hero-section h1 {
+            font-size: 44px;
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .booking-hero-section p {
+            font-size: 18px;
+            max-width: 740px;
+            margin: 0 auto 30px;
+            opacity: 0.92;
+        }
+
+        .booking-hero-section .theme-btn {
+            padding: 14px 42px;
+            font-size: 15px;
+            border-radius: 50px;
+            box-shadow: 0 18px 40px rgba(50, 65, 255, 0.22);
+        }
+
+        .booking-container {
+            margin-top: -80px;
+            padding: 0 15px 80px;
+        }
+
+        .booking-card {
+            border-radius: 24px;
+            box-shadow: 0 24px 80px rgba(15, 35, 95, 0.12);
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+        .booking-card .card-body {
+            padding: 40px;
+        }
+
+        .booking-section {
+            margin-bottom: 40px;
+        }
+
+        .booking-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            margin-bottom: 26px;
+            font-size: 21px;
+            font-weight: 700;
+            color: #3241ff;
+        }
+
+        .section-heading span {
+            display: inline-block;
+            width: 40px;
+            height: 4px;
+            background: #b78b4b;
+            margin-right: 15px;
+            border-radius: 3px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .form-control,
+        .custom-select,
+        .form-control:focus,
+        textarea {
+            border-radius: 12px;
+            border: 2px solid #eeeef6;
+            padding: 14px 18px;
+            background: #f9f9f9;
+            transition: all 0.3s ease;
+            box-shadow: none;
+        }
+
+        .form-control:focus,
+        .custom-select:focus,
+        textarea:focus {
+            border-color: #3241ff;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(50, 65, 255, 0.1);
+        }
+
+        .date-time-panel {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 25px;
+        }
+
+        @media (max-width: 991px) {
+            .date-time-panel {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .schedule-card {
+            border-radius: 18px;
+            background: #fbfbff;
+            border: 1px solid #eeeef6;
+            padding: 24px;
+        }
+
+        .schedule-card h5 {
+            font-size: 15px;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .calendar-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #656d86;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .calendar-day {
+            min-height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            border: 1px solid transparent;
+            background: #ffffff;
+            color: #26313f;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-weight: 600;
+        }
+
+        .calendar-day:hover {
+            transform: translateY(-2px);
+            border-color: #3241ff;
+            background: #eef2ff;
+        }
+
+        .calendar-day.past {
+            background: #f2f3f8;
+            color: #b4b8cd;
+            cursor: not-allowed;
+            border-color: #eeeef6;
+        }
+
+        .calendar-day.selected {
+            background: #3241ff;
+            color: #fff;
+            border-color: #091394;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        @media (max-width: 576px) {
+            .time-slots {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        .time-slot {
+            border-radius: 14px;
+            border: 1px solid #eeeef6;
+            background: #ffffff;
+            padding: 12px 10px;
+            font-weight: 600;
+            color: #243854;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+
+        .time-slot:hover {
+            transform: translateY(-2px);
+            border-color: #3241ff;
+            background: #eef2ff;
+        }
+
+        .time-slot.selected {
+            border-color: #3241ff;
+            background: #3241ff;
+            color: #ffffff;
+        }
+
+        .time-slot.unavailable {
+            color: #b4b8cd;
+            background: #f2f3f8;
+            cursor: not-allowed;
+            border-color: #eeeef6;
+        }
+
+        .summary-panel {
+            border-radius: 18px;
+            background: linear-gradient(180deg, #ffffff 0%, #f7f8ff 100%);
+            border: 1px solid #eeeef6;
+            padding: 26px;
+        }
+
+        .summary-panel h5 {
+            font-size: 16px;
+            margin-bottom: 22px;
+            font-weight: 700;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 18px 0;
+            border-bottom: 1px solid #f0f0f8;
+            font-size: 14px;
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+
+        .summary-row strong {
+            color: #3241ff;
+            font-weight: 700;
+        }
+
+        .summary-row span {
+            color: #323d54;
+        }
+
+        .booking-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .booking-actions .theme-btn {
+            min-width: 220px;
+        }
+
+        .success-panel {
+            display: none;
+            border-radius: 20px;
+            padding: 42px 32px;
+            background: linear-gradient(135deg, #45a401 0%, #9ee213 100%);
+            color: #fff;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(30, 120, 30, 0.18);
+        }
+
+        .success-panel.show {
+            display: block;
+        }
+
+        .success-panel h3 {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .success-panel p {
+            font-size: 15px;
+            opacity: 0.95;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.18);
+            border-radius: 50%;
+            margin-bottom: 18px;
+            font-size: 32px;
+        }
+
+        .error-message {
+            display: none;
+            color: #ed1314;
+            margin-top: 8px;
+            font-size: 13px;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        .form-group.error .form-control,
+        .form-group.error .custom-select,
+        .form-group.error textarea {
+            border-color: #ed1314;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .info-cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-card {
+            background: #ffffff;
+            border: 1px solid #eeeef6;
+            border-radius: 18px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: #3241ff;
+            box-shadow: 0 18px 40px rgba(50, 65, 255, 0.12);
+        }
+
+        .info-card i {
+            font-size: 32px;
+            color: #b78b4b;
+            margin-bottom: 18px;
+        }
+
+        .info-card h5 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .info-card p {
+            color: #6b728a;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .calendar-container {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: visible;
+        }
+
+        .calendar-frame {
+            width: 100%;
+            border: 0;
+            display: block;
+            height: auto;
+            min-height: 700px; /* base height for small screens */
+        }
+
+            @media (min-width: 1024px) {
+                .calendar-frame {
+                    min-height: 800px;
+                }
+            }
+
+            @media (min-width: 1400px) {
+                .calendar-frame {
+                    min-height: 900px;
+                }
+            }
+
+            .page-wrapper {
+                display: flex;
+                flex-direction: column;
+            }
+
+            @media (max-width: 576px) {
+                .booking-hero-section {
+                padding: 70px 0 50px;
+            }
+
+            .booking-hero-section h1 {
+                font-size: 32px;
+            }
+
+            .booking-card {
+                box-shadow: 0 14px 40px rgba(15, 35, 95, 0.1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sticky-icon">
+        <a href="https://wa.me/+919665945287?text=I'm%20interested%20in%20your%20Services"
+            class="Youtube">
+            <img src="images/whatsapp-icon.png"
+                class="img-fluid imghw"> Whatsapp
+        </a>
+    </div>
+
+    <div class="page-wrapper">
+        <header class="main-header header-style-five">
+            <div class="header-top">
+                <div class="auto-container">
+                    <div class="inner-container clearfix">
+                        <div class="top-left">
+                            <ul class="contact-list clearfix">
+                                <li><i class="fa fa-envelope-o"></i> <a
+                                        href="mailto:carushikeshaneray@gmail.com">carushikeshaneray@gmail.com</a></li>
+                                <li><i class="fa fa-phone"></i><a href="tel:+919665945287">+91 9665945287</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-upper">
+                <div class="auto-container header-auto">
+                    <div class="clearfix">
+                        <div class="pull-left logo-box">
+                            <div class="logo"><a href="index.html"><img class="img1"
+                                        src="images/logo.png"
+                                        alt="SSAR & Co Chartered Accountant"></a></div>
+                        </div>
+                        <div class="nav-outer clearfix">
+                            <nav class="main-menu navbar-expand-md">
+                                <div class="navbar-header">
+                                    <button class="navbar-toggler"
+                                        type="button"
+                                        data-toggle="collapse"
+                                        data-target="#navbarSupportedContent"
+                                        aria-controls="navbarSupportedContent"
+                                        aria-expanded="false"
+                                        aria-label="Toggle navigation">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="navbar-collapse collapse clearfix"
+                                    id="navbarSupportedContent">
+                                    <ul class="navigation clearfix">
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li class="dropdown"><a href="#">Services</a>
+                                            <ul>
+                                                <li class="dropdown"><a href="#"> Audits</a>
+                                                    <ul>
+                                                        <li><a href="audit-under-income-tax-service.html">Audit Under
+                                                                Income Tax Act </a></li>
+                                                        <li><a href="audit-under-companies-act.html">Audit Under
+                                                                Companies Act </a></li>
+                                                        <li><a href="gst-tax-service-provider.html">GST Audit </a></li>
+                                                        <li><a href="transfer-pricing-services.html">Transfer Pricing
+                                                            </a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="taxation-matters-service.html">Taxation Matters </a></li>
+                                                <li><a href="secretarial-services.html"> Secretarial Services</a></li>
+                                                <li><a href="accounting-and-compliances-services.html">Accounting and
+                                                        Compliances</a></li>
+                                                <li><a href="outsource-bookkeeping-service.html">Outsource Bookkeeping
+                                                        Service </a></li>
+                                                <li class="dropdown"><a href="#">Others</a>
+                                                    <ul>
+                                                        <li><a href="business-consulting-services.html">Business
+                                                                Consulting </a></li>
+                                                        <li><a href="lower-deduction-certificate.html">Lower Deduction
+                                                                Certificate(form 13) </a></li>
+                                                        <li><a href="business-set-up-in-india.html">Business Set up In
+                                                                India </a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="industry-we-serve.html">Industry We Serve</a></li>
+                                        <li><a href="team.html">Team</a></li>
+                                        <li><a href="appointment-booking.html"
+                                                style="color:#3241ff;font-weight:600;">Book Consultation</a></li>
+                                        <li><a href="contact.html">Contact us</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sticky-header">
+                <div class="auto-container clearfix">
+                    <div class="logo pull-left">
+                        <a href="index.html"
+                            class="img-responsive"><img class="img1"
+                                src="images/sticky-logo.png"
+                                alt="SSAR & Co Chartered Accountant"></a>
+                    </div>
+                    <div class="right-col pull-right">
+                        <nav class="main-menu navbar-expand-md">
+                            <button class="navbar-toggler"
+                                type="button"
+                                data-toggle="collapse"
+                                data-target="#navbarSupportedContent1"
+                                aria-controls="navbarSupportedContent1"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <div class="navbar-collapse collapse clearfix"
+                                id="navbarSupportedContent1">
+                                <ul class="navigation clearfix">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li class="dropdown"><a href="#">Services</a>
+                                        <ul>
+                                            <li class="dropdown"><a href="#"> Audits</a>
+                                                <ul>
+                                                    <li><a href="audit-under-income-tax-service.html">Audit Under Income
+                                                            Tax Act </a></li>
+                                                    <li><a href="audit-under-companies-act.html">Audit Under Companies
+                                                            Act </a></li>
+                                                    <li><a href="gst-tax-service-provider.html">GST Audit </a></li>
+                                                    <li><a href="transfer-pricing-services.html">Transfer Pricing </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="taxation-matters-service.html">Taxation Matters </a></li>
+                                            <li><a href="secretarial-services.html"> Secretarial Services</a></li>
+                                            <li><a href="accounting-and-compliances-services.html">Accounting and
+                                                    Compliances</a></li>
+                                            <li><a href="outsource-bookkeeping-service.html">Outsource Bookkeeping
+                                                    Service </a></li>
+                                            <li class="dropdown"><a href="#">Others</a>
+                                                <ul>
+                                                    <li><a href="business-consulting-services.html">Business Consulting
+                                                        </a></li>
+                                                    <li><a href="lower-deduction-certificate.html">Lower Deduction
+                                                            Certificate(form 13) </a></li>
+                                                    <li><a href="business-set-up-in-india.html">Business Set up In India
+                                                        </a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="industry-we-serve.html">Industry We Serve</a></li>
+                                    <li><a href="team.html">Team</a></li>
+                                    <li><a href="appointment-booking.html"
+                                            style="color:#3241ff;font-weight:600;">Book Consultation</a></li>
+                                    <li><a href="contact.html">Contact us</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="booking-hero-section">
+            <div class="auto-container text-center">
+                <h1>Book a Consultation with Our CA Experts</h1>
+                <p>Schedule a 1-on-1 session for tax, audit, or business advisory</p>
+                <a href="#bookingForm"
+                    class="theme-btn btn-style-one">Check Availability</a>
+            </div>
+        </section>
+
+        <section class="auto-container">
+            <div class="info-cards">
+                <div class="info-card">
+                    <i class="fa fa-calendar"></i>
+                    <h5>Trusted Scheduling</h5>
+                    <p>A smart appointment process designed for busy professionals.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fa fa-clock-o"></i>
+                    <h5>Flexible Slots</h5>
+                    <p>Choose the time that works best for your consultation.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fa fa-user-circle"></i>
+                    <h5>Expert Guidance</h5>
+                    <p>Meet with qualified CA experts in tax, audit, and business advisory.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section class="booking-container">
+            <div class="booking-card"
+                id="bookingForm">
+                <div class="card-body">
+                    <form id="appointmentForm"
+                        novalidate>
+                        <div class="booking-section">
+                            <div class="section-heading"><span></span>Select Service</div>
+                            <div class="form-group">
+                                <select class="custom-select"
+                                    id="serviceType"
+                                    required>
+                                    <option value="">-- Select Service --</option>
+                                    <option value="Income Tax Consultation">Income Tax Consultation</option>
+                                    <option value="GST & Compliance">GST & Compliance</option>
+                                    <option value="Company Registration">Company Registration</option>
+                                    <option value="Audit & Assurance">Audit & Assurance</option>
+                                    <option value="Business Advisory">Business Advisory</option>
+                                </select>
+                                <div class="error-message">Please select a service</div>
+                            </div>
+                        </div>
+
+                        <div class="booking-section">
+                            <div class="section-heading"><span></span>Select Date & Time</div>
+                            <div class="date-time-panel">
+                                <div class="schedule-card">
+                                    <h5>Calendar-style date picker</h5>
+                                    <div id="dateNotice"
+                                        style="margin-bottom:18px; font-weight:600; color:#3241ff;">Select a date to
+                                        view available slots.</div>
+                                    <div class="calendar-grid"
+                                        id="calendarGrid"></div>
+                                </div>
+                                <div class="schedule-card">
+                                    <h5>Available time slots</h5>
+                                    <div class="time-slots"
+                                        id="timeSlots"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="booking-section">
+                            <div class="section-heading"><span></span>Client Details</div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group"
+                                        id="group-fullname">
+                                        <label for="fullName">Full Name <span style="color:#ed1314;">*</span></label>
+                                        <input type="text"
+                                            class="form-control"
+                                            id="fullName"
+                                            placeholder="Your full name"
+                                            required>
+                                        <div class="error-message">Please enter your full name</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group"
+                                        id="group-email">
+                                        <label for="emailAddress">Email Address <span
+                                                style="color:#ed1314;">*</span></label>
+                                        <input type="email"
+                                            class="form-control"
+                                            id="emailAddress"
+                                            placeholder="you@example.com"
+                                            required>
+                                        <div class="error-message">Please enter a valid email</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group"
+                                        id="group-phone">
+                                        <label for="phoneNumber">Phone Number <span
+                                                style="color:#ed1314;">*</span></label>
+                                        <input type="tel"
+                                            class="form-control"
+                                            id="phoneNumber"
+                                            placeholder="10-digit phone number"
+                                            required>
+                                        <div class="error-message">Please enter a valid 10-digit phone number</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="companyName">Company Name (Optional)</label>
+                                        <input type="text"
+                                            class="form-control"
+                                            id="companyName"
+                                            placeholder="Company name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message / Notes (Optional)</label>
+                                <textarea class="form-control"
+                                    id="message"
+                                    rows="4"
+                                    placeholder="Let us know if you have specific requirements or topics."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="booking-section">
+                            <div class="section-heading"><span></span>Booking Summary</div>
+                            <div class="summary-panel">
+                                <div class="summary-row"><strong>Selected Service</strong><span id="summaryService">Not
+                                        selected</span></div>
+                                <div class="summary-row"><strong>Selected Date</strong><span id="summaryDate">Not
+                                        selected</span></div>
+                                <div class="summary-row"><strong>Selected Time</strong><span id="summaryTime">Not
+                                        selected</span></div>
+                                <div class="booking-actions">
+                                    <button type="reset"
+                                        class="theme-btn btn-style-three">Clear Form</button>
+                                    <button type="submit"
+                                        class="theme-btn btn-style-one">Confirm Appointment</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div id="successPanel"
+                        class="success-panel">
+                        <div class="success-icon"><i class="fa fa-check"></i></div>
+                        <h3>Appointment Confirmed</h3>
+                        <p id="successText">Thank you for booking. We will review your request and contact you soon.</p>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <!-- Google Calendar Appointment Scheduling begin -->
+        <div class="calendar-container">
+            <iframe
+                class="calendar-frame"
+                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3-YZwcjMI4JXNpT2k7AJSKIPzOSj_7FIGZl_PyNWJlBXF0Qb4NRNeAZJX5WtVUJtVJGRHMvAZq?gv=true"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <!-- end Google Calendar Appointment Scheduling -->
+
+        <footer class="main-footer style-three">
+            <div class="auto-container">
+                <div class="widgets-section">
+                    <div class="row clearfix">
+                        <div class="big-column col-lg-5 col-md-12 col-sm-12">
+                            <div class="row clearfix">
+                                <div class="footer-column col-lg-8 col-md-6 col-sm-12">
+                                    <div class="footer-widget logo-widget">
+                                        <h4 style="color:#fff;text-align:center;margin-bottom:0px;">What people say
+                                            about us!</h4>
+                                        <div class="footer-view">
+                                            <img src="images/reviews-img.png">
+                                            <a href="https://www.google.com/search?q=ca+rushikesh+aneray"><button
+                                                    class="button-19"
+                                                    role="button">Write your reviews</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                                    <div class="footer-widget links-widget">
+                                        <h4>Links</h4>
+                                        <ul class="list-link">
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="audit-under-income-tax-service.html">Services</a></li>
+                                            <li><a href="about.html">About us</a></li>
+                                            <li><a href="team.html">Team</a></li>
+                                            <li><a href="industry-we-serve.html">Industry We Serve</a></li>
+                                            <li><a href="contact.html">Contact Us</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="big-column col-lg-7 col-md-12 col-sm-12">
+                            <div class="row clearfix">
+                                <div class="footer-column col-lg-6 col-md-6 col-sm-12">
+                                    <div class="footer-widget links-widget">
+                                        <h4>Contact Us</h4>
+                                        <ul class="list-style-two">
+                                            <li><span class="icon fa fa-phone"></span><b>Call :</b><br><a
+                                                    href="tel:+919665945287">+91 9665945287</a></li>
+                                            <li><span class="icon fa fa-envelope"></span><b>Mail :</b><br><a
+                                                    href="mailto:carushikeshaneray@gmail.com">carushikeshaneray@gmail.com</a>
+                                            </li>
+                                            <li><span class="icon fa fa-home"></span><b>Address :</b><br>Shop No 06,
+                                                Ground Floor, Shree Ganesh Ace Arcade, Near Kokne Chowk, Behind Mahindra
+                                                Showroom, Pimple Saudagar, Pimpri- Chinchwad, Maharashtra 411017</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="footer-column col-lg-6 col-md-6 col-sm-12">
+                                    <div class="footer-widget gallery-widget">
+                                        <h4>Locate Us</h4>
+                                        <div class="widget-content">
+                                            <iframe
+                                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15123.394071618053!2d73.8189913!3d18.625882!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b8675d684bd3%3A0xbba673d57b7f1753!2sCA%20Rushikesh%20Aneray!5e0!3m2!1sen!2sin!4v1693308840484!5m2!1sen!2sin"
+                                                width="100%"
+                                                height="250"
+                                                style="border:0;"
+                                                allowfullscreen=""
+                                                loading="lazy"
+                                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"
+                style="background-color: #000;">
+                <div class="auto-container">
+                    <div class="row clearfix">
+                        <div class="copyright-column col-lg-6 col-md-6 col-sm-12">
+                            <div class="copyright">&copy; All rights reserved by <a href="#">SSAR & Co Chartered
+                                    Accountant</a></div>
+                        </div>
+                        <div class="social-column col-lg-6 col-md-6 col-sm-12">
+                            <ul>
+                                <li style="color:#fff;">Design & Developed By <a href="#">Netcom Business Solutions Pvt.
+                                        Ltd.</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script>
+        if (typeof WOW !== 'undefined') {
+            new WOW().init();
+        }
+
+        const appointmentData = {
+            service: '',
+            date: '',
+            time: ''
+        };
+
+        const minDate = new Date();
+        minDate.setDate(minDate.getDate() + 1);
+        const timeSlots = ['09:00 AM', '09:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '02:00 PM', '02:30 PM', '03:00 PM', '03:30 PM', '04:00 PM', '04:30 PM'];
+
+        function formatDateLabel(dateString) {
+            const date = new Date(dateString + 'T00:00:00');
+            return date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+        }
+
+        function buildCalendar() {
+            const calendarGrid = document.getElementById('calendarGrid');
+            const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+            calendarGrid.innerHTML = '';
+            days.forEach(day => {
+                const label = document.createElement('div');
+                label.className = 'calendar-label';
+                label.textContent = day;
+                calendarGrid.appendChild(label);
+            });
+
+            const today = new Date();
+            const endDate = new Date(minDate);
+            endDate.setDate(endDate.getDate() + 30);
+
+            for (let d = new Date(minDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+                const calendarDay = document.createElement('div');
+                calendarDay.className = 'calendar-day';
+                calendarDay.textContent = d.getDate();
+                calendarDay.dataset.date = d.toISOString().slice(0, 10);
+                if (d < today || d.toDateString() === today.toDateString()) {
+                    calendarDay.classList.add('past');
+                } else {
+                    calendarDay.addEventListener('click', function () {
+                        selectDate(this);
+                    });
+                }
+                calendarGrid.appendChild(calendarDay);
+            }
+        }
+
+        function selectDate(element) {
+            document.querySelectorAll('.calendar-day').forEach(day => day.classList.remove('selected'));
+            element.classList.add('selected');
+            appointmentData.date = element.dataset.date;
+            document.getElementById('dateNotice').textContent = 'Selected: ' + formatDateLabel(appointmentData.date);
+            document.getElementById('summaryDate').textContent = formatDateLabel(appointmentData.date);
+            renderTimeSlots();
+        }
+
+        function renderTimeSlots() {
+            const timeSlotsContainer = document.getElementById('timeSlots');
+            timeSlotsContainer.innerHTML = '';
+            timeSlots.forEach(slot => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'time-slot';
+                button.textContent = slot;
+                button.addEventListener('click', () => selectTime(button));
+                timeSlotsContainer.appendChild(button);
+            });
+        }
+
+        function selectTime(button) {
+            document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+            button.classList.add('selected');
+            appointmentData.time = button.textContent;
+            document.getElementById('summaryTime').textContent = appointmentData.time;
+        }
+
+        document.getElementById('serviceType').addEventListener('change', function () {
+            appointmentData.service = this.value;
+            document.getElementById('summaryService').textContent = this.value || 'Not selected';
+        });
+
+        function showFieldError(element, message) {
+            const group = element.closest('.form-group');
+            group.classList.add('error');
+            group.querySelector('.error-message').textContent = message;
+        }
+
+        function clearFieldError(element) {
+            const group = element.closest('.form-group');
+            group.classList.remove('error');
+        }
+
+        function validateForm() {
+            let valid = true;
+            ['fullName', 'emailAddress', 'phoneNumber'].forEach(id => {
+                const field = document.getElementById(id);
+                clearFieldError(field);
+            });
+
+            if (!appointmentData.service) {
+                document.getElementById('serviceType').closest('.form-group').classList.add('error');
+                valid = false;
+            }
+            if (!appointmentData.date) {
+                alert('Please select a consultation date.');
+                valid = false;
+            }
+            if (!appointmentData.time) {
+                alert('Please choose a time slot.');
+                valid = false;
+            }
+
+            const fullName = document.getElementById('fullName').value.trim();
+            if (!fullName) {
+                showFieldError(document.getElementById('fullName'), 'Please enter your full name.');
+                valid = false;
+            } else if (!/^[a-zA-Z\s]+$/.test(fullName)) {
+                showFieldError(document.getElementById('fullName'), 'Please enter a valid name.');
+                valid = false;
+            }
+
+            const email = document.getElementById('emailAddress').value.trim();
+            if (!email) {
+                showFieldError(document.getElementById('emailAddress'), 'Please enter your email address.');
+                valid = false;
+            } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+                showFieldError(document.getElementById('emailAddress'), 'Please enter a valid email address.');
+                valid = false;
+            }
+
+            const phone = document.getElementById('phoneNumber').value.replace(/\D/g, '');
+            if (!phone) {
+                showFieldError(document.getElementById('phoneNumber'), 'Please enter your phone number.');
+                valid = false;
+            } else if (phone.length !== 10) {
+                showFieldError(document.getElementById('phoneNumber'), 'Please enter a valid 10-digit phone number.');
+                valid = false;
+            }
+
+            return valid;
+        }
+
+        document.getElementById('appointmentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (!validateForm()) return;
+
+            const name = document.getElementById('fullName').value.trim();
+            document.getElementById('successText').textContent = `Thank you, ${name}! Your ${appointmentData.service} appointment is tentatively booked for ${formatDateLabel(appointmentData.date)} at ${appointmentData.time}.`;
+            document.getElementById('appointmentForm').style.display = 'none';
+            document.getElementById('successPanel').classList.add('show');
+            document.getElementById('successPanel').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.getElementById('appointmentForm').addEventListener('reset', function () {
+            appointmentData.service = '';
+            appointmentData.date = '';
+            appointmentData.time = '';
+            document.getElementById('summaryService').textContent = 'Not selected';
+            document.getElementById('summaryDate').textContent = 'Not selected';
+            document.getElementById('summaryTime').textContent = 'Not selected';
+            document.getElementById('dateNotice').textContent = 'Select a date to view available slots.';
+            document.querySelectorAll('.calendar-day').forEach(day => day.classList.remove('selected'));
+            document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+            document.querySelectorAll('.form-group').forEach(group => group.classList.remove('error'));
+        });
+
+        window.addEventListener('DOMContentLoaded', function () {
+            buildCalendar();
+            renderTimeSlots();
+        });
+    </script>
+</body>
+
+</html>
