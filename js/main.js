@@ -599,9 +599,9 @@
 			if (nav.find('a[href="appointment-booking.html"]').length === 0) {
 				var contactItem = nav.find('li a[href="contact.html"]').parent();
 				if (contactItem.length) {
-					contactItem.after('<li><a href="appointment-booking.html">Book Consultation</a></li>');
+					contactItem.after('<li><a href="appointment-booking.html">Book Appointment</a></li>');
 				} else {
-					nav.append('<li><a href="appointment-booking.html">Book Consultation</a></li>');
+					nav.append('<li><a href="appointment-booking.html">Book Appointment</a></li>');
 				}
 			}
 		});
