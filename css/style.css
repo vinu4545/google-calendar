@@ -1914,8 +1914,8 @@ img{
 	margin-right:0px;
 }
 
-@media only screen and (min-width: 768px) {
-	.header-upper .clearfix,
+@media only screen and (min-width: 1200px) {
+	.header-upper .auto-container > .clearfix,
 	.sticky-header .auto-container {
 		display: flex;
 		justify-content: space-between;
@@ -1961,6 +1961,7 @@ img{
 		width: 100%;
 		padding: 0;
 		overflow: visible;
+		min-width: 0;
 	}
 
 	.main-menu .navigation {
@@ -1971,6 +1972,7 @@ img{
 		margin: 0;
 		width: 100%;
 		white-space: nowrap;
+		min-width: 0;
 	}
 
 	.main-menu .navigation > li {
@@ -1992,6 +1994,171 @@ img{
 
 	.main-menu .navigation > li > a {
 		white-space: nowrap;
+	}
+}
+
+@media only screen and (max-width: 1199px) {
+	.main-menu .navigation {
+		gap: 16px;
+	}
+
+	.main-menu .navigation > li > a {
+		font-size: 15px;
+	}
+
+	.main-menu.navbar-expand-md .navbar-toggler,
+	.main-menu .navbar-header .navbar-toggler {
+		display: inline-block !important;
+	}
+
+	.main-menu.navbar-expand-md .navbar-collapse {
+		display: none !important;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		background: #2c2c2c;
+		z-index: 999;
+		box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+	}
+
+	.main-menu.navbar-expand-md .navbar-collapse.show,
+	.main-menu.navbar-expand-md .navbar-collapse.in {
+		display: flex !important;
+		flex-direction: column;
+		padding: 10px 0;
+	}
+
+	.main-menu.navbar-expand-md .navbar-collapse > .navigation {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		margin: 0;
+		gap: 0;
+	}
+
+	.main-menu.navbar-expand-md .navbar-collapse > .navigation > li {
+		width: 100%;
+		margin: 0;
+		float: none;
+	}
+
+	.main-menu.navbar-expand-md .navbar-collapse > .navigation > li + li {
+		margin-left: 0;
+	}
+
+	.main-menu.navbar-expand-md .navbar-collapse > .navigation > li > a {
+		padding: 10px 18px !important;
+		white-space: normal;
+	}
+}
+
+/* ===== Mid-screen navbar alignment fixes (768px - 1100px) ===== */
+/* Implemented to center and balance logo + menu without changing desktop or mobile behavior */
+
+/* gentle default safeguards to avoid logo stretching */
+.logo-box .logo {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-shrink: 0;
+	white-space: nowrap;
+}
+.logo-box .logo img,
+.sticky-header .logo img {
+	width: auto;
+	height: auto;
+	max-width: 100%;
+}
+
+@media (min-width: 768px) and (max-width: 1100px) {
+	/* navbar container acting as flex container to keep things balanced */
+	.main-menu.navbar-expand-md,
+	.nav-outer > .main-menu {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		gap: 12px;
+	}
+
+	/* Keep logo compact and prevent overlap */
+	.logo-box .logo,
+	.main-header .logo-box .logo {
+		flex: 0 0 auto;
+	}
+	.logo-box .logo img,
+	.sticky-header .logo img {
+		max-height: 45px;
+		width: auto;
+		height: auto;
+	}
+
+	/* Tighter, centered navigation spacing */
+	.main-menu .navigation {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 12px;
+	}
+	.main-menu .navigation > li {
+		margin-right: 0;
+		float: none;
+	}
+	.main-menu .navigation > li + li {
+		margin-left: 8px;
+	}
+	.main-menu .navigation > li > a {
+		font-size: 14px;
+		padding: 8px 12px !important;
+	}
+
+	/* Horizontal padding so navbar content feels centered within page */
+	.main-header .nav-outer,
+	.auto-container.header-auto {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	/* Ensure collapse/hamburger behavior remains unchanged (mobile unaffected) */
+	.main-menu .navbar-header { display: block; }
+	.main-menu .navbar-collapse {
+		position: relative;
+		display: flex !important;
+		justify-content: flex-end;
+		align-items: center;
+		background: transparent;
+		box-shadow: none;
+		width: auto;
+	}
+
+	/* Prevent brand text wrapping */
+	.logo-box .logo,
+	.logo-box .logo span {
+		white-space: nowrap;
+	}
+
+	/* Small visual padding control (only mid screens) */
+	.nav-outer > .main-menu {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+/* End of mid-screen navbar alignment fixes */
+
+@media only screen and (max-width: 991px) {
+	.header-upper .auto-container.header-auto,
+	.sticky-header .auto-container {
+		padding: 0 18px;
+	}
+
+	.main-menu .navigation {
+		gap: 12px;
+	}
+
+	.main-menu .navigation > li > a {
+		font-size: 14px;
 	}
 }
 
@@ -2251,16 +2418,67 @@ img{
 	z-index:100;
 	display:none;
 	opacity: 0;
-    visibility: hidden;
-    transition: all 900ms ease;
-    -moz-transition: all 900ms ease;
-    -webkit-transition: all 900ms ease;
-    -ms-transition: all 900ms ease;
-    -o-transition: all 900ms ease;
+	visibility: hidden;
+	transition: all 900ms ease;
+	-moz-transition: all 900ms ease;
+	-webkit-transition: all 900ms ease;
+	-ms-transition: all 900ms ease;
+	-o-transition: all 900ms ease;
 	padding: 0px 0px;
 	background-color: #ffffff;
 	border: 3px solid #3241ff;
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.10);
+}
+
+@media only screen and (max-width: 1199px) {
+	.main-menu {
+		position: relative;
+	}
+
+	.main-menu .navbar-header {
+		display: block;
+		text-align: right;
+		width: 100%;
+		padding: 15px 0;
+	}
+
+	.main-menu .navbar-header .navbar-toggle,
+	.main-menu .navbar-header .navbar-toggler,
+	.main-menu .navbar-toggler {
+		display: inline-block;
+		border: 1px solid #cc8809;
+		background: #cc8809;
+		float: none;
+	}
+
+	.main-menu .navbar-collapse {
+		display: none !important;
+		width: 100%;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		background: #2c2c2c;
+		z-index: 999;
+		box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+	}
+
+	.main-menu .navbar-collapse.in,
+	.main-menu .navbar-collapse.show {
+		display: flex !important;
+		flex-direction: column;
+		padding: 10px 0;
+	}
+
+	.main-menu .navigation {
+		gap: 14px;
+		width: 100%;
+		flex-wrap: nowrap;
+	}
+
+	.main-menu .navigation > li > a {
+		font-size: 14px;
+		padding: 10px 18px !important;
+	}
 }
 
 .main-menu .navigation > li > ul:before{
@@ -12513,4 +12731,83 @@ margin-bottom: 20px;
 }
 .gallery-section .video-box {
 	margin-top: 30px;
+}
+
+/* ===== Strong mid-screen fixes: prevent collapsed vertical menu overlay ===== */
+@media (min-width: 768px) and (max-width: 1100px) {
+	/* hide mobile toggler on mid screens (Bootstrap shows toggler <768) */
+	.main-menu .navbar-header,
+	.main-menu .navbar-header .navbar-toggler,
+	.main-menu .navbar-header .navbar-toggle {
+		display: none !important;
+	}
+
+	/* Ensure nav is horizontal and static (no absolute overlay) */
+	.main-menu .navbar-collapse {
+		position: static !important;
+		top: auto !important;
+		left: auto !important;
+		display: flex !important;
+		flex-direction: row !important;
+		align-items: center !important;
+		justify-content: flex-end !important;
+		width: auto !important;
+		background: transparent !important;
+		box-shadow: none !important;
+	}
+
+	/* Horizontal navigation, tighter gaps */
+	.main-menu .navigation {
+		display: flex !important;
+		flex-direction: row !important;
+		align-items: center !important;
+		justify-content: flex-end !important;
+		gap: 12px !important;
+		white-space: nowrap;
+	}
+
+	.main-menu .navigation > li {
+		float: none !important;
+		margin: 0 !important;
+	}
+
+	.main-menu .navigation > li + li {
+		margin-left: 10px !important;
+	}
+
+	.main-menu .navigation > li > a {
+		padding: 8px 10px !important;
+		font-size: 14px !important;
+		line-height: 1 !important;
+	}
+
+	/* Prevent logo stretching and remove negative nav offsets */
+	.logo-box .logo img,
+	.main-header .logo-box .logo img,
+	.sticky-header .logo img {
+		max-height: 50px !important;
+		height: auto !important;
+		width: auto !important;
+	}
+
+	/* Remove unexpected negative top margins that can cause overlap */
+	.main-header .nav-outer,
+	.main-header .nav-outer .main-menu,
+	.main-header .header-upper .outer-box {
+		margin-top: 0 !important;
+		padding-top: 0 !important;
+	}
+
+	/* Keep the overall header container centered with side padding */
+	.auto-container.header-auto,
+	.main-header .auto-container,
+	.sticky-header .auto-container {
+		padding-left: 20px !important;
+		padding-right: 20px !important;
+	}
+
+	/* Ensure dropdowns still appear on hover as desktop behavior */
+	.main-menu .navigation > li.dropdown:hover > ul {
+		position: absolute;
+	}
 }
